@@ -51,7 +51,7 @@ print(pad_length)
 pad_signal = np.concatenate((wave_data, zeros))  # 填补后的信号记为pad_signal
 
 indices = np.tile(np.arange(0, wlen), (nf, 1)) + np.tile(np.arange(0, nf * inc, inc),
-                                                         (wlen, 1)).T  # 相当于对所有帧的时间点进行抽取，得到nf*wlen长度的矩阵
+                                                         (wlen, 1)).T  # 相当于对所有帧的采样点采样，得到nf*wlen长度的矩阵
 indices = np.array(indices, dtype=np.int32)  # 将indices转化为矩阵
 frames = pad_signal[indices]  # 得到帧信号
 

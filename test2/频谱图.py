@@ -36,7 +36,8 @@ amp = np.arange(N)  # 频率
 # plt.plot(amp, angle_y)
 
 abs_y = np.abs(x)
-normalization = abs_y/N
+print(np.max(abs_y))
+normalization = abs_y/np.max(abs_y)
 plt.subplot(122)
 plt.title("amplitude spectrum")     # 单边振幅谱(归一化)
 plt.xlabel("Amplitude")
@@ -45,5 +46,3 @@ plt.legend()
 plt.plot(amp[range(int(N/2))], normalization[range(int(N/2))])
 plt.show()
 
-plt.grid()
-plt.show()
