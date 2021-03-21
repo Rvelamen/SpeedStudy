@@ -10,6 +10,7 @@ import scipy.signal as signal
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
 
+# 窗型选择
 def choose_windows(type, wlen):
     """
     type
@@ -30,6 +31,9 @@ def choose_windows(type, wlen):
     elif type == 4:
         window = signal.triang(wlen)
     return window
+
+# 计算短时能量
+
 
 wlen = 512
 inc = 128
