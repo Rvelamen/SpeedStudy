@@ -105,8 +105,6 @@ plt.plot(time, fft_signal, c='y')
 # fft_signal = abs(fft_signal)  # 取变换结果的模
 # plt.plot(time, fft_signal, c='k')
 
-# 短时能量
-# c = np.square(b)
 plt.legend()
 plt.grid()
 plt.show()
