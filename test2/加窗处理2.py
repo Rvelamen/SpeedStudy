@@ -1,9 +1,10 @@
 # -*- coding:utf-8 -*-
 __author__: 'Rvelamen'
-__data__ = '2021/3/20 23:44'
+__data__ = '2021/3/21 9:31'
 
 from matplotlib import pyplot as plt
 import numpy as np
+import scipy.signal as signal
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
 plt.rcParams['axes.unicode_minus'] = False
@@ -51,8 +52,7 @@ a = frames[2:3]
 amp = np.arange(wlen)
 
 # 加窗前
-plt.figure(figsize=(10, 4))
-plt.subplot(121)
+plt.figure(figsize=(3, 4))
 plt.title("未加窗振幅图")
 plt.xlabel("振幅值")
 plt.ylabel("频率")
@@ -61,11 +61,44 @@ abs_y = np.abs(x)
 plt.plot(amp[range(int(wlen/2))], abs_y[range(int(wlen/2))])
 
 # 添加汉明窗
-plt.subplot(122)
+plt.figure(figsize=(3, 4))
 plt.title("填加汉明窗振幅图")
 plt.xlabel("振幅值")
 plt.ylabel("频率")
 window = choose_windows(1, wlen)
+b = a[0] * window
+x = np.fft.fft(b)
+abs_y = np.abs(x)
+plt.plot(amp[range(int(wlen / 2))], abs_y[range(int(wlen / 2))])
+
+# 添加海宁窗
+plt.figure(figsize=(3, 4))
+plt.title("填加海宁窗振幅图")
+plt.xlabel("振幅值")
+plt.ylabel("频率")
+window = choose_windows(2, wlen)
+b = a[0] * window
+x = np.fft.fft(b)
+abs_y = np.abs(x)
+plt.plot(amp[range(int(wlen / 2))], abs_y[range(int(wlen / 2))])
+
+# 添加三角窗
+plt.figure(figsize=(3, 4))
+plt.title("填加三角窗振幅图")
+plt.xlabel("振幅值")
+plt.ylabel("频率")
+window = choose_windows(4, wlen)
+b = a[0] * window
+x = np.fft.fft(b)
+abs_y = np.abs(x)
+plt.plot(amp[range(int(wlen / 2))], abs_y[range(int(wlen / 2))])
+
+# 添加矩阵窗
+plt.figure(figsize=(3, 4))
+plt.title("填加矩阵窗振幅图")
+plt.xlabel("振幅值")
+plt.ylabel("频率")
+window = choose_windows(3, wlen)
 b = a[0] * window
 x = np.fft.fft(b)
 abs_y = np.abs(x)
